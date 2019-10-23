@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap 4 cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- date picker (in basic information and for employee experience) cdn from https://tempusdominus.github.io -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+    <!-- country state city dropdown  -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//geodata.solutions/includes/countrystatecity.js"></script>
+    <!-- fontasweone 5 local -->
+    <script src="./fontawesome_5.11.2/js/all.js"></script>
+    <script src="./fontawesome_5.11.2/js/all.min.js"></script>
+    <!-- local styles --> 
+    <script src="./dashboard.js"></script>
+    <link rel="stylesheet" href="./dashboard.css">
+    
+    <script>
+        // script for facebook button 
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '{your-app-id}',
+                cookie: true,
+                xfbml: true,
+                version: '{api-version}'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <title>Dashboard | Admin</title>
+</head>
+
+<body style="background-image: url(https://cdn.hipwallpaper.com/i/71/40/eDtqgp.jpg);" class="img-fluid h-100" >
+    <header class="">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark pt-0 pb-0">
+            <div class="container">
+                <ul class="nav navbar-nav justify-content-start">
+                    <li class="nav-item">
+                        <a href="#" class="text-white nav-link"><i class="fa fa-mobile-alt"></i>&nbsp;&nbsp;+91-7382525840</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="text-white nav-link"><i class="fa fa-envelope"></i>&nbsp;&nbsp;contactus@pioneercoders.com</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav justify-content-start">
+                    <li class="nav-item">
+                        <a href="#" class="text-white nav-link"><i class="fa fa-map-marker-alt"></i>&nbsp;&nbsp;BTM layout 1stage, Near Gangothri Circle</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light border-bottom border-dark pt-2 pb-2">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand font-weight-bold" href="#">
+                <img src="./pc-logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                &nbsp;&nbsp;&nbsp;&nbsp;Pioneer Coders
+            </a>
+            <div class="mb-0 navbar-logout-button-sm">
+                <button type="submit" class="btn btn-primary">Logout</button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-headphones-alt"></i>&nbsp;&nbsp;&nbsp;Tutorials <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-user-tie"></i>&nbsp;&nbsp;&nbsp;HR Recruiter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;Placement Cell</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-user-graduate"></i>&nbsp;&nbsp;&nbsp;Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;Events</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+        <div class="navbar-logout-button-lg border-left border-dark">
+            <div class="form-inline pl-5">
+                <div class="mb-0">
+                    <label for="staticEmail2" class="sr-only"><i class="fa fa-user-circle"></i>Username</label>
+                    <input type="text" readonly class="form-control-plaintext font-weight-bold active" id="staticEmail2"
+                        value="Gideon Gandrapu">
+                </div>
+                <div class="mb-0">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- <div class="container-fluid pt-5"> -->
+    <div class="pt-2 pb-5">
+        <div class="row col-sm-12 pt-5 ml-0">
+            <div class="col-sm-3 pb-3">
+               
+                <div class="container-fluid p-3 border bg-light rounded">
+                    <div>
+                        <p class=" h4 text-center"><i class="fa fa-chalkboard-teacher"></i>&nbsp;&nbsp;&nbsp;&nbsp;User Dashboard</p>
+                    </div>
+                    <div class=" container border-top">
+                        <div class="row">
+                            <div class="col pt-2">
+                                <img src="./52AKrnzM_400x400.jpg" alt="Profile Picture" class="img-thumbnail rounded-circle shadow">
+                            </div>
+                            <div class="col pt-4">
+                                <p><b>Age:</b> 26</p>
+                                <p><b>Experience:</b> 3 Yrs.</p>
+                                <p><b>Software Developer</b></p>
+                                <p><b>Regnant Soft. Sol.</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center pt-2">
+                        <button type="button" class="btn btn-primary">
+                            Gideon Gandrapu <span class="badge badge-light ml-4">9</span>
+                            <span class="sr-only">unread messages</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="accordion shadow text-center font-weight-bold" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link text-decoration-none font-weight-bold" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-id-badge"></i>&nbsp;&nbsp;&nbsp;&nbsp;My Profile
+                                </button>
+                            </h2>
+                        </div>
+                
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="col-sm">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                        <a class="list-group-item list-group-item-action active" id="list-updateprofile-list"
+                                            data-toggle="list" href="#list-updateprofile" role="tab"
+                                            aria-controls="updateprofile"><i class="fa fa-user-edit"></i>&nbsp;&nbsp;&nbsp;&nbsp;Update Profile</a>
+                                        <a class="list-group-item list-group-item-action" id="list-viewprofile-list" data-toggle="list"
+                                            href="#list-viewprofile" role="tab" aria-controls="viewprofile"><i class="fa fa-user-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed text-decoration-none font-weight-bold" type="button"
+                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fa fa-desktop"></i>&nbsp;&nbsp;&nbsp;&nbsp;Courses
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="col-sm">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                        <a class="list-group-item list-group-item-action active" id="list-java-list" data-toggle="list" href="#list-java" role="tab" aria-controls="java"><i class="fa fa-java"></i>&nbsp;&nbsp;&nbsp;&nbsp;Java</a>
+                                        <a class="list-group-item list-group-item-action" id="list-javascript-list" data-toggle="list" href="#list-javascript" role="tab" aria-controls="javascript"><i class="fa fa-js-square"></i>&nbsp;&nbsp;&nbsp;&nbsp;JavaScript</a>
+                                        <a class="list-group-item list-group-item-action" id="list-angular-list" data-toggle="list" href="#list-angular" role="tab" aria-controls="angular"><i class="fa fa-angular"></i>&nbsp;&nbsp;&nbsp;&nbsp;Angular</a>
+                                        <a class="list-group-item list-group-item-action" id="list-bootstrap4-list" data-toggle="list" href="#list-bootstrap4" role="tab" aria-controls="bootstrap4"><i class="fa fa-bootstrap"></i>&nbsp;&nbsp;&nbsp;&nbsp;Bootstrap-4</a>
+                                        <a class="list-group-item list-group-item-action" id="list-spring-list" data-toggle="list" href="#list-spring" role="tab" aria-controls="spring"><i class="fa fa-"></i>&nbsp;&nbsp;&nbsp;&nbsp;Spring</a>
+                                        <a class="list-group-item list-group-item-action" id="list-react-list" data-toggle="list" href="#list-react" role="tab" aria-controls="react"><i class="fa fa-react"></i>&nbsp;&nbsp;&nbsp;&nbsp;React</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed text-decoration-none font-weight-bold" type="button"
+                                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree"><i class="fa fa-keyboard"></i>&nbsp;&nbsp;&nbsp;&nbsp;Exam
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="col-sm">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                        <a class="list-group-item list-group-item-action active" id="list-attemptexam-list" data-toggle="list" href="#list-attemptexam" role="tab" aria-controls="attemptexam"><i class="fa fa-pen-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Attempt Exam</a>
+                                        <a class="list-group-item list-group-item-action" id="list-mocktest-list" data-toggle="list" href="#list-mocktest" role="tab" aria-controls="mocktest"><i class="fa fa-pencil-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Mock Test</a>
+                                        <a class="list-group-item list-group-item-action" id="list-prepareforexam-list" data-toggle="list" href="#list-prepareforexam" role="tab" aria-controls="prepareforexam"><i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;&nbsp;Prepare For Exam</a>
+                                        <a class="list-group-item list-group-item-action" id="list-examdates-list" data-toggle="list" href="#list-examdates" role="tab" aria-controls="examdates"><i class="fa fa-calendar-day"></i>&nbsp;&nbsp;&nbsp;&nbsp;See Exam Dates</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed text-decoration-none font-weight-bold" type="button"
+                                    data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour"><i class="fa fa-poll"></i>&nbsp;&nbsp;&nbsp;&nbsp;Results
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="col-sm">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                        <a class="list-group-item list-group-item-action active" id="list-seeresults-list" data-toggle="list" href="#list-seeresults" role="tab" aria-controls="seeresults"><i class="fa fa-poll-h"></i>&nbsp;&nbsp;&nbsp;&nbsp;See Results</a>
+                                        <a class="list-group-item list-group-item-action" id="list-progress-list" data-toggle="list" href="#list-progress" role="tab" aria-controls="progress"><i class="fa fa-chart-line"></i>&nbsp;&nbsp;&nbsp;&nbsp;See Your Progress</a>
+                                        <a class="list-group-item list-group-item-action" id="list-allresults-list" data-toggle="list" href="#list-allresults" role="tab" aria-controls="allresults"><i class="fa fa-chart-pie"></i>&nbsp;&nbsp;&nbsp;&nbsp;See All Your Results</a>
+                                        <a class="list-group-item list-group-item-action" id="list-review-list" data-toggle="list" href="#list-review" role="tab" aria-controls="review"><i class="fa fa-hand-paper"></i>&nbsp;&nbsp;&nbsp;&nbsp;Raise Review For Your Last Exam</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed text-decoration-none font-weight-bold" type="button"
+                                    data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
+                                    aria-controls="collapseFive"><i class="fa fa-calendar-check"></i>&nbsp;&nbsp;&nbsp;&nbsp;Events
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="col-sm">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                        <a class="list-group-item list-group-item-action active" id="list-allevents-list" data-toggle="list" href="#list-allevents" role="tab" aria-controls="allevents"><i class="fa fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;See All Events</a>
+                                        <a class="list-group-item list-group-item-action" id="list-remainder-list" data-toggle="list" href="#list-remainder" role="tab" aria-controls="remainder"><i class="fa fa-calendar-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Keep Remainder</a>
+                                        <a class="list-group-item list-group-item-action" id="list-library-list" data-toggle="list" href="#list-library" role="tab" aria-controls="library"><i class="fa fa-calendar"></i>&nbsp;&nbsp;&nbsp;&nbsp;Add Evens To Your Library</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingSix">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed text-decoration-none font-weight-bold" type="button"
+                                    data-toggle="collapse" data-target="#collapseSix" aria-expanded="false"
+                                    aria-controls="collapseSix"><i class="fa fa-ellipsis-v"></i>&nbsp;&nbsp;&nbsp;&nbsp;Others
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="col-sm">
+                                    <div class="list-group" id="list-tab" role="tablist">
+                                        <a class="list-group-item list-group-item-action active" id="list-privacypolicy-list" data-toggle="list" href="#list-privacypolicy" role="tab" aria-controls="privacypolicy"><i class="fa fa-file-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;See Our Privacy Policy</a>
+                                        <a class="list-group-item list-group-item-action" id="list-reportbug-list" data-toggle="list" href="#list-reportbug" role="tab" aria-controls="reportbug"><i class="fa fa-bug"></i>&nbsp;&nbsp;&nbsp;&nbsp;Report Bug In Our Website</a>
+                                        <a class="list-group-item list-group-item-action" id="list-blockaccount-list" data-toggle="list" href="#list-blockaccount" role="tab" aria-controls="blockaccount"><i class="fa fa-user-lock"></i>&nbsp;&nbsp;&nbsp;&nbsp;Block Your Account</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="bg-light border rounded shadow">
+                    <div class="container">
+                        <p class="h3 p-3">Your Profile </p>
+                    </div>
+                    <div class="col-sm pb-4">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="list-updateprofile" role="tabpanel"
+                                aria-labelledby="list-updateprofile-list">
+                                <div class="container-fluid">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                            <a class="nav-item nav-link active" id="nav-basicinfo-tab" data-toggle="tab"
+                                                href="#nav-basicinfo" role="tab" aria-controls="nav-basicinfo"
+                                                aria-selected="true">Basic Information</a>
+                                            <a class="nav-item nav-link" id="nav-address-tab" data-toggle="tab"
+                                                href="#nav-address" role="tab" aria-controls="nav-address"
+                                                aria-selected="false">Address</a>
+                                            <a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab"
+                                                href="#nav-education" role="tab" aria-controls="nav-education"
+                                                aria-selected="false">Education</a>
+                                            <a class="nav-item nav-link" id="nav-skillset-tab" data-toggle="tab"
+                                                href="#nav-skillset" role="tab" aria-controls="nav-skillset"
+                                                aria-selected="false">Skill Set</a>
+                                            <a class="nav-item nav-link" id="nav-workexperience-tab" data-toggle="tab"
+                                                href="#nav-workexperience" role="tab" aria-controls="nav-workexperience"
+                                                aria-selected="false">Work Experience</a>
+                                            <a class="nav-item nav-link" id="nav-projects-tab" data-toggle="tab"
+                                                href="#nav-projects" role="tab" aria-controls="nav-projects"
+                                                aria-selected="false">Projects</a>
+                                            <a class="nav-item nav-link" id="nav-socialinfo-tab" data-toggle="tab"
+                                                href="#nav-socialinfo" role="tab" aria-controls="nav-socialinfo"
+                                                aria-selected="false">Social Info</a>
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content bg-white p-4 border border-top-0" id="nav-tabContent">
+                                        <div class="tab-pane fade show active pt-2" id="nav-basicinfo" role="tabpanel"
+                                            aria-labelledby="nav-basicinfo-tab">
+                                            <div class="pb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Personal Information
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <form class="needs-validation" novalidate>
+                                                            <div class="form-row">
+                                                                <div class="col-sm-4 mb-3">
+                                                                    <label for="validationCustom01"
+                                                                        class="font-weight-bold">First name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="validationCustom01" placeholder="First name"
+                                                                        value="Gideon" required>
+                                                                    <div class="valid-feedback">
+                                                                        Looks good!
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 mb-3">
+                                                                    <label for="validationCustom02"
+                                                                        class="font-weight-bold">Last name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="validationCustom02" placeholder="Last name"
+                                                                        value="Gandrapu" required>
+                                                                    <div class="valid-feedback">
+                                                                        Looks good!
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4 mb-3">
+                                                                    <label for="validationCustomUsername"
+                                                                        class="font-weight-bold">Username</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text"
+                                                                                id="inputGroupPrepend">@</span>
+                                                                        </div>
+                                                                        <input type="text" class="form-control"
+                                                                            id="validationCustomUsername"
+                                                                            placeholder="Username"
+                                                                            aria-describedby="inputGroupPrepend"
+                                                                            required>
+                                                                        <div class="invalid-feedback">
+                                                                            Please choose a username.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form">
+                                                                <div class="form-group row">
+                                                                    <label for="staticEmail"
+                                                                        class="col-sm-2 col-form-label font-weight-bold">Email</label>
+                                                                    <div class="col-sm-10">
+                                                                        <input type="text" readonly
+                                                                            class="form-control-plaintext "
+                                                                            id="staticEmail" value="gideongandrapu@gmail.com">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label for="inputPassword"
+                                                                        class="col-sm-2 col-form-label font-weight-bold">Change
+                                                                        Password</label>
+                                                                    <div class="col-sm-4">
+                                                                        <input type="password" class="form-control"
+                                                                            id="inputPassword"
+                                                                            placeholder="New Password">
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <input type="password" class="form-control"
+                                                                            id="inputPassword"
+                                                                            placeholder="Confirm New Password">
+                                                                    </div>
+                                                                    <div class="col-sm-2">
+                                                                        <button type="button"
+                                                                            class="btn btn-primary ">Update
+                                                                            Password</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="text-center pt-4 pb-2">
+                                                                <div class="form-group">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox"
+                                                                            value="" id="invalidCheck" required>
+                                                                        <label class="form-check-label"
+                                                                            for="invalidCheck">
+                                                                            Agree to terms and conditions
+                                                                        </label>
+                                                                        <div class="invalid-feedback">
+                                                                            You must agree before submitting.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <button class="btn btn-primary" type="submit">Save your
+                                                                    information</button>
+                                                            </div>
+                                                        </form>
+
+                                                        <script>
+                                                            // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                                            (function () {
+                                                                'use strict';
+                                                                window.addEventListener('load', function () {
+                                                                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                                                    var forms = document.getElementsByClassName('needs-validation');
+                                                                    // Loop over them and prevent submission
+                                                                    var validation = Array.prototype.filter.call(forms, function (form) {
+                                                                        form.addEventListener('submit', function (event) {
+                                                                            if (form.checkValidity() === false) {
+                                                                                event.preventDefault();
+                                                                                event.stopPropagation();
+                                                                            }
+                                                                            form.classList.add('was-validated');
+                                                                        }, false);
+                                                                    });
+                                                                }, false);
+                                                            })();
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Basic Information
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <form>
+                                                            <div class="form-group row pb-4">
+                                                                <div class="col-sm-2">
+                                                                    <label for="validationCustomDate"
+                                                                        class="font-weight-bold">Date of birth</label>
+                                                                </div>
+                                                                <div class="col-sm-8">
+                                                                    <div class="container">
+                                                                        <div class="row">
+                                                                            <div class="">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group date"
+                                                                                        id="datetimepicker4"
+                                                                                        data-target-input="nearest">
+                                                                                        <input type="text"
+                                                                                            class="form-control datetimepicker-input"
+                                                                                            data-target="#datetimepicker4"
+                                                                                            placeholder="MM/DD/YYYY">
+                                                                                        <div class="input-group-append"
+                                                                                            data-target="#datetimepicker4"
+                                                                                            data-toggle="datetimepicker">
+                                                                                            <div
+                                                                                                class="input-group-text">
+                                                                                                <i
+                                                                                                    class="fa fa-calendar"></i>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <script type="text/javascript">
+                                                                                $(function () {
+                                                                                    $('#datetimepicker4').datetimepicker({
+                                                                                        defaultDate: "1/1/1999",
+                                                                                        disabledDates: [
+                                                                                            // moment("1/2/1999"),
+                                                                                            // new Date(2013, 11 - 1, 21),
+                                                                                            // "11/29/2013 00:53"
+                                                                                        ]
+                                                                                    });
+                                                                                });
+                                                                            </script>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row pb-4">
+                                                                <div class="col-sm-2">
+                                                                    <label for="validationResume"
+                                                                        class="font-weight-bold">Upload Resume</label>
+                                                                </div>
+                                                                <div class="col-sm-10">
+                                                                    <label for="exampleFormControlFile1">Select File
+                                                                        That Is Less Than 2 MB</label>
+                                                                    <input type="file" class="form-control-file"
+                                                                        id="exampleFormControlFile1">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row pb-4">
+                                                                <div class="col-sm-2">
+                                                                    <label for="validationResume"
+                                                                        class="font-weight-bold">Self Introduction
+                                                                        Video</label>
+                                                                </div>
+                                                                <div class="col-sm-10 col-lg-4">
+                                                                   <label for="exampleFormControlFile1">Select File That Is Less Than 2-min and 20 MB</label>
+                                                                         <!--<input type="file" class="form-control-file" id="exampleFormControlFile1"> -->
+                                                                    <div class="custom-file">
+                                                                        <input type="file" class="custom-file-input" id="customFile">
+                                                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-center pt-4">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary ">Upload</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade pt-2" id="nav-address" role="tabpanel"
+                                            aria-labelledby="nav-address-tab">
+                                            <div class="pb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Current Address
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <!-- <form class="was-validated"> -->
+                                                        <form class="needs-validation">
+                                                            <div class="">
+                                                                <div class="col mb-3">
+                                                                    <div>
+                                                                        <label for="validationTextarea"
+                                                                            class="font-weight-bold">Address</label>
+                                                                    </div>
+                                                                    <div>
+                                                                        <textarea
+                                                                            class="form-control is-invalid col-lg-4"
+                                                                            id="validationTextarea"
+                                                                            placeholder="Enter Your Address Here "
+                                                                            required></textarea>
+                                                                        <div class="invalid-feedback">
+                                                                            Please enter a message in the textarea.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="">
+                                                                <div class="col-sm-6 col-lg-4 mb-3">
+                                                                    <label for="validationCustom03"
+                                                                        class="font-weight-bold">Country</label>
+                                                                    <select
+                                                                        class="custom-select custom-select-md mb-3 col countries"
+                                                                        name="country" id="countryId">
+                                                                        <option value="">Select Country</option>
+                                                                    </select>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide a valid city.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3 col-lg-4 mb-3">
+                                                                    <label for="validationCustom04"
+                                                                        class="font-weight-bold">State</label>
+                                                                    <select
+                                                                        class="custom-select custom-select-md mb-3 col states"
+                                                                        name="state" id="stateId">
+                                                                        <option value="1">Select State</option>
+                                                                    </select>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide a valid state.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3 col-lg-4 mb-3">
+                                                                    <label for="validationCustom05"
+                                                                        class="font-weight-bold">City</label>
+                                                                    <select
+                                                                        class="custom-select custom-select-md mb-3 col cities"
+                                                                        name="city" id="cityId">
+                                                                        <option value="1">Select City</option>
+                                                                    </select>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide a valid state.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-3 col-lg-4 mb-3">
+                                                                    <label for="validationCustom06"
+                                                                        class="font-weight-bold">Zip</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="validationCustom05" placeholder="Zip"
+                                                                        required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide a valid zip.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-center pt-4">
+                                                                <button type="submit" class="btn btn-primary ">Save
+                                                                    Address</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade pt-2" id="nav-education" role="tabpanel"
+                                            aria-labelledby="nav-education-tab">
+                                            <div class="pb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Education
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <div class="">
+                                                            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+                                                            <script type="text/javascript">
+                                                                jQuery(function ($) {
+                                                                    var $course = $('#course1'), count = 1;
+                                                                    $('#addcourse').click(function (e) {
+                                                                        e.preventDefault();
+                                                                        if (count > 2) {
+                                                                            alert("That's enough already, you've studied a lot!");
+                                                                            return;
+                                                                        }
+                                                                        var idname = 'course' + (++count);
+                                                                        $course.parent().append($course.clone().attr({ id: idname, name: idname }));
+                                                                    });
+                                                                });
+                                                            </script>
+                                                            <style type="text/css">
+                                                                #courses input {
+                                                                    display: block;
+                                                                }
+                                                            </style>
+                                                            <!-- <div id="emails"><input type="text" id="email1" name="email1"></div> -->
+                                                            <div id="courses">
+                                                                <div class="row">
+                                                                    <div class=" col-sm-6 mb-3" id="course1" name="course1">
+                                                                        <div class="container-fluid shadow border py-3 rounded">
+                                                                            <div>
+                                                                                <div class="text-center">
+                                                                                    <p class="h4 pb-4">Add Your Course Details</p>
+                                                                                </div>
+                                                                                <form class="was-validated">
+                                                                                    <div class="form-group">
+                                                                                        <select class="custom-select" required>
+                                                                                            <option value="">Others</option>
+                                                                                            <option selected value="1">SSC</option>
+                                                                                            <option value="2">Intermediate</option>
+                                                                                            <option value="3">Enginnering</option>
+                                                                                            <option value="3">Degree</option>
+                                                                                            <option value="3">BBM</option>
+                                                                                        </select>
+                                                                                        <div class="invalid-feedback">Please Select Degree From Dropdown</div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <select class="custom-select" required>
+                                                                                            <option value="">Select Institute</option>
+                                                                                            <option value="1">One</option>
+                                                                                            <option value="2">Two</option>
+                                                                                            <option value="3">Three</option>
+                                                                                        </select>
+                                                                                        <div class="invalid-feedback">Please Select Institute From Dropdown</div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <select class="custom-select" required>
+                                                                                            <option value="">Select University</option>
+                                                                                            <option value="1">One</option>
+                                                                                            <option value="2">Two</option>
+                                                                                            <option value="3">Three</option>
+                                                                                        </select>
+                                                                                        <div class="invalid-feedback">Please Select University From Dropdown</div>
+                                                                                    </div>
+                                                                                    <div class="mb-2">
+                                                                                        <label for="validationTooltip03" class="font-weight-bold">Branch</label>
+                                                                                        <input type="text" class="form-control" id="validationTooltip03" placeholder="Ex. Computer Science Department"
+                                                                                            required>
+                                                                                    </div>
+                                                                                    <div class="form-row mb-4">
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <label for="validationTooltip04" class="font-weight-bold">Year Of Passing</label>
+                                                                                            <input type="text" class="form-control" id="validationTooltip04" placeholder="DD/MM/YYYY"
+                                                                                                required>
+                                                                                            <div class="invalid-tooltip">
+                                                                                                Please provide a valid YOP.
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-6 mb-2">
+                                                                                            <label for="validationTooltip05" class="font-weight-bold">Percentage</label>
+                                                                                            <input type="text" class="form-control" id="validationTooltip05" placeholder="You Can Also Enter GPA"
+                                                                                                required>
+                                                                                            <div class="invalid-tooltip">
+                                                                                                Please provide a valid zip.
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <div class="form-check">
+                                                                                            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3"
+                                                                                                required>
+                                                                                            <label class="form-check-label" for="invalidCheck3">
+                                                                                                Add / Show This On Your Profile
+                                                                                            </label>
+                                                                                            <div class="invalid-feedback">
+                                                                                                Every one on your friends list can see this.
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="text-center">
+                                                                                        <button class="btn btn-primary" type="submit">Save Course</button>
+                                                                                    </div>
+                                                                                </form>
+                                                            
+                                                                            </div>
+                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row justify-content-center pt-5">
+                                                                    <div class="px-4 py-2">
+                                                                        <button id="addcourse" class="btn btn-primary" type="submit">Add New Course</button>
+                                                                    </div>
+                                                                    <div class="px-4 py-2">
+                                                                        <button class="btn btn-danger" type="submit">Remove Course</button>
+                                                                    </div>
+                                                                <!-- <a id="addemail" href="#">Add Another div</a> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade pt-2" id="nav-skillset" role="tabpanel" aria-labelledby="nav-skillset-tab">
+                                            <div class="pb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Skill Info
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <div>
+                                                            <div>
+                                                                <p class="h4 pb-4">Select Your Skills</p>
+                                                            </div>
+                                                            <div>
+                                                                <div>
+                                                                    <!-- Button trigger modal -->
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                                                        Add New Tag
+                                                                    </button>
+                                                                
+                                                                    <!-- Modal -->
+                                                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                                                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Enter Tag That You Want To Add</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div>
+                                                                                        <form>
+                                                                                            <div class="form-group">
+                                                                                                <label for="exampleFormControlSelect1" class="font-weight-bold">Select Skills To Add</label>
+                                                                                                <select class="form-control" id="exampleFormControlSelect1">
+                                                                                                    <option>Active Listening</option>
+                                                                                                    <option>Computer Skills</option>
+                                                                                                    <option>Customer Service</option>
+                                                                                                    <option>Interpersonal Skills</option>
+                                                                                                    <option>Leadership</option>
+                                                                                                    <option>Management Skills</option>
+                                                                                                    <option>Problem-Solving</option>
+                                                                                                    <option>Time Management</option>
+                                                                                                    <option>Transferable Skills</option>
+                                                                                                    <option>Other</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <p class="h5 text-secondary font-weight-bold text-center py-4">Or You Can Also Add Skills That You Have.</p>
+                                                                                    <div>
+                                                                                        <p class="font-weight-bold">Enter Skill That You Want To Add</p>
+                                                                                        <input class="form-control" type="text" placeholder="Ex. Leadership">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="button" class="btn btn-primary">Add</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="pt-4 pb-5 container-fluid">
+                                                                    <div class="row pt-4">
+                                                                        <div class="col-sm-3">
+                                                                            <p class=" h5">Communication Skills</p>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <!-- <label for="customRange2">Example range</label> -->
+                                                                            <input type="range" class="custom-range" min="0" max="10" step="1.0" id="customRange1">
+                                                                            <!-- <input type="range" class="custom-range" min="0" max="10" step="1.0" id="customRange3"> -->
+                                                                        </div>
+                                                                        <div class="col-sm-3 ">
+                                                                            <span id="customRange1_value" class="font-weight-bold text-wrap text-center">Move Slider To Select Range.
+                                                                                <br />(scale value is from 1 - 10)</span>
+                                                                        </div>
+                                                                        <script>
+                                                                            $(document).on('input', '#customRange1', function () {
+                                                                                $('#customRange1_value').html($(this).val());
+                                                                            });
+                                                                        </script>
+                                                                    </div>
+                                                                    <div class="row pt-4">
+                                                                        <div class="col-sm-3">
+                                                                            <p class=" h5">Analytical Skills</p>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <input type="range" class="custom-range" min="0" max="10" step="1.0" id="customRange2">
+                                                                        </div>
+                                                                        <div class="col-sm-3 ">
+                                                                            <span id="customRange2_value" class="font-weight-bold text-wrap text-center">Move Slider To Select Range.
+                                                                                <br />(scale value is from 1 - 10)</span>
+                                                                        </div>
+                                                                        <script>
+                                                                            $(document).on('input', '#customRange2', function () {
+                                                                                $('#customRange2_value').html($(this).val());
+                                                                            });
+                                                                        </script>
+                                                                    </div>
+                                                                    <div class="text-center pt-5">
+                                                                        <button type="submit" class="btn btn-primary ">Save</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-workexperience" role="tabpanel" aria-labelledby="nav-workexperience-tab">
+                                            <div class="pb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Experience
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <div class="row">
+                                                            <div class="col-sm-6 py-4">
+                                                                <p class="h4 text-weight-bold">Current Salary</p>
+                                                                <div class="row">
+                                                                    <div class="col-sm">
+                                                                        <form class="needs-validation" novalidate>
+                                                                            <div class="form-group">
+                                                                                <label for="validationTooltip01">Lakhs</label>
+                                                                                <select class="custom-select" required>
+                                                                                    <option value="">Open this select menu</option>
+                                                                                    <option value="1">1 Lakh - 2 Lakh</option>
+                                                                                    <option value="2">2 Lakh - 3 Lakh</option>
+                                                                                    <option value="3">3 Lakh - 4 Lakh</option>
+                                                                                    <option value="1">5 Lakh - 8 Lakh</option>
+                                                                                    <option value="2">9 Lakh - 12 Lakh</option>
+                                                                                    <option value="3">13 Lakh - 20 Lakh</option>
+                                                                                </select>
+                                                                                <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="col-sm">
+                                                                        <form class="needs-validation" novalidate>
+                                                                            <div class="form-group">
+                                                                                <label for="validationTooltip01">Thousands</label>
+                                                                                <select class="custom-select" required>
+                                                                                    <option value="">Open this select menu</option>
+                                                                                    <option value="1">5000 - 10,000</option>
+                                                                                    <option value="2">20,000 - 30,000</option>
+                                                                                    <option value="3">40,000 - 50,000</option>
+                                                                                    <option value="1">60,000 - 70,000</option>
+                                                                                    <option value="2">80,000 - 90,000</option>
+                                                                                    <option value="3">90,000 - 100,000</option>
+                                                                                </select>
+                                                                                <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 py-4">
+                                                                <p class="h4 text-weight-bold">Expected Salary</p>
+                                                                <div class="row">
+                                                                    <div class="col-sm">
+                                                                        <form class="needs-validation" novalidate>
+                                                                            <div class="form-group">
+                                                                                <label for="validationTooltip01">Lakhs</label>
+                                                                                <select class="custom-select" required>
+                                                                                    <option value="">Open this select menu</option>
+                                                                                    <option value="1">1 Lakh - 2 Lakh</option>
+                                                                                    <option value="2">2 Lakh - 3 Lakh</option>
+                                                                                    <option value="3">3 Lakh - 4 Lakh</option>
+                                                                                    <option value="1">5 Lakh - 8 Lakh</option>
+                                                                                    <option value="2">9 Lakh - 12 Lakh</option>
+                                                                                    <option value="3">13 Lakh - 20 Lakh</option>
+                                                                                </select>
+                                                                                <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="col-sm">
+                                                                        <form class="needs-validation" novalidate>
+                                                                            <div class="form-group">
+                                                                                <label for="validationTooltip01">Thousands</label>
+                                                                                <select class="custom-select" required>
+                                                                                    <option value="">Open this select menu</option>
+                                                                                    <option value="1">5000 - 10,000</option>
+                                                                                    <option value="2">20,000 - 30,000</option>
+                                                                                    <option value="3">40,000 - 50,000</option>
+                                                                                    <option value="1">60,000 - 70,000</option>
+                                                                                    <option value="2">80,000 - 90,000</option>
+                                                                                    <option value="3">90,000 - 100,000</option>
+                                                                                </select>
+                                                                                <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 py-4">
+                                                                    <p class="h4 text-weight-bold">Experience</p>
+                                                                    <div class="row">
+                                                                        <div class="col-sm">
+                                                                            <form class="needs-validation" novalidate>
+                                                                                <div class="form-group">
+                                                                                    <label for="validationTooltip01">Years</label>
+                                                                                    <select class="custom-select" required>
+                                                                                        <option value="">Open this select menu</option>
+                                                                                        <option value="1">1 Yrs. - 2 Yrs.</option>
+                                                                                        <option value="2">2 Yrs. - 3 Yrs.</option>
+                                                                                        <option value="3">4 Yrs. - 5 Yrs.</option>
+                                                                                        <option value="1">6 Yrs. - 7 Yrs.</option>
+                                                                                        <option value="2">8 Yrs. - 9 Yrs.</option>
+                                                                                        <option value="3">9 Yrs. - 15 Yrs.</option>
+                                                                                    </select>
+                                                                                    <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <form class="needs-validation" novalidate>
+                                                                                <div class="form-group">
+                                                                                    <label for="validationTooltip01">Months</label>
+                                                                                    <select class="custom-select" required>
+                                                                                        <option value="">Open this select menu</option>
+                                                                                        <option value="1">1 Month - 3 Months</option>
+                                                                                        <option value="2">4 Months - 6 Months</option>
+                                                                                        <option value="3">7 Months - 9 Months</option>
+                                                                                        <option value="1">10 Months - 12 Months</option>
+                                                                                    </select>
+                                                                                    <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="pt-5 text-center">
+                                                            <button type="button" class="btn btn-primary text-center">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="pb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Work Experience
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <div class="col-sm-6">
+                                                            <p class="h4 font-weight-bold">Employer 1</p>
+                                                            <div class="pt-3">
+                                                                <div class="col-sm">
+                                                                    <input class="form-control" type="text" placeholder="Employer">
+                                                                </div>
+                                                                <div class="col-sm pt-4">
+                                                                    <select class="form-control">
+                                                                        <option>Default select</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="pt-4">
+                                                                    <div class="col-sm">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group date" id="datetimepicker5" data-target-input="nearest">
+                                                                                        <input type="text" class="form-control datetimepicker-input"
+                                                                                            data-target="#datetimepicker5" required/>
+                                                                                        <div class="input-group-append" data-target="#datetimepicker5"
+                                                                                            data-toggle="datetimepicker">
+                                                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <p class="h5 text-center">TO</p>
+                                                                            </div>
+                                                                            <div class="col-sm-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group date" id="datetimepicker6" data-target-input="nearest">
+                                                                                        <input type="text" class="form-control datetimepicker-input"
+                                                                                            data-target="#datetimepicker6" required/>
+                                                                                        <div class="input-group-append" data-target="#datetimepicker6"
+                                                                                            data-toggle="datetimepicker">
+                                                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <script type="text/javascript">
+                                                                                $(function () {
+                                                                                    $('#datetimepicker5').datetimepicker({
+                                                                                        format: 'L'
+                                                                                    });
+                                                                                });
+                                                                                $(function () {
+                                                                                    $('#datetimepicker6').datetimepicker({
+                                                                                        format: 'L'
+                                                                                    });
+                                                                                });
+                                                                            </script>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="container pt-2">
+                                                                    <input class="form-control col-sm" type="text" placeholder="Designation">
+                                                                </div>
+                                                                <div class="container pt-4">
+                                                                    <input class="form-control col-sm" type="text" placeholder="Job Profile">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pt-5 text-center">
+                                                            <button type="button" class="btn btn-primary text-center">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-projects" role="tabpanel" aria-labelledby="nav-projects-tab">
+                                            <div class="pb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Personal Information
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <p class="h5">Project 1</p>
+                                                                <form class="was-validated pt-4">
+                                                                    <div class="mb-3">
+                                                                        <label for="validationProjectname">Project Name</label>
+                                                                        <input type="text" class="form-control" id="validationProjectname" placeholder="Ex. Anti-Virus"
+                                                                            required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="validationTextarea">Textarea</label>
+                                                                        <textarea class="form-control is-invalid" id="validationTextarea"
+                                                                            placeholder="Required example textarea" required></textarea>
+                                                                        <div class="invalid-feedback">
+                                                                            Please enter a message in the textarea.
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
+                                                                                        <input type="text" class="form-control datetimepicker-input is-invalid"
+                                                                                            data-target="#datetimepicker7" required />
+                                                                                        <div class="input-group-append" data-target="#datetimepicker7"
+                                                                                            data-toggle="datetimepicker">
+                                                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <p class="h5 text-center">TO</p>
+                                                                            </div>
+                                                                            <div class="col-sm-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+                                                                                        <input type="text" class="form-control datetimepicker-input is-invalid"
+                                                                                            data-target="#datetimepicker8" required />
+                                                                                        <div class="input-group-append" data-target="#datetimepicker8"
+                                                                                            data-toggle="datetimepicker">
+                                                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <script type="text/javascript">
+                                                                                $(function () {
+                                                                                    $('#datetimepicker7').datetimepicker({
+                                                                                        format: 'L'
+                                                                                    });
+                                                                                });
+                                                                                $(function () {
+                                                                                    $('#datetimepicker8').datetimepicker({
+                                                                                        format: 'L'
+                                                                                    });
+                                                                                });
+                                                                            </script>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="validationResponsibility">Project Name</label>
+                                                                        <input type="text" class="form-control" id="validationResponsibility" placeholder="Ex. I'm Team Lead"
+                                                                            required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="custom-select" required>
+                                                                            <option value="">Open this select menu</option>
+                                                                            <option value="1">One</option>
+                                                                            <option value="2">Two</option>
+                                                                            <option value="3">Three</option>
+                                                                        </select>
+                                                                        <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p class="h5">Project 2</p>
+                                                                <form class="was-validated pt-4">
+                                                                    <div class="mb-3">
+                                                                        <label for="validationProjectname">Project Name</label>
+                                                                        <input type="text" class="form-control" id="validationProjectname" placeholder="Ex. Anti-Virus"
+                                                                            required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="validationTextarea">Textarea</label>
+                                                                        <textarea class="form-control is-invalid" id="validationTextarea"
+                                                                            placeholder="Required example textarea" required></textarea>
+                                                                        <div class="invalid-feedback">
+                                                                            Please enter a message in the textarea.
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
+                                                                                        <input type="text" class="form-control datetimepicker-input is-invalid"
+                                                                                            data-target="#datetimepicker7" required />
+                                                                                        <div class="input-group-append" data-target="#datetimepicker7"
+                                                                                            data-toggle="datetimepicker">
+                                                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <p class="h5 text-center">TO</p>
+                                                                            </div>
+                                                                            <div class="col-sm-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+                                                                                        <input type="text" class="form-control datetimepicker-input is-invalid"
+                                                                                            data-target="#datetimepicker8" required />
+                                                                                        <div class="input-group-append" data-target="#datetimepicker8"
+                                                                                            data-toggle="datetimepicker">
+                                                                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <script type="text/javascript">
+                                                                                $(function () {
+                                                                                    $('#datetimepicker7').datetimepicker({
+                                                                                        format: 'L'
+                                                                                    });
+                                                                                });
+                                                                                $(function () {
+                                                                                    $('#datetimepicker8').datetimepicker({
+                                                                                        format: 'L'
+                                                                                    });
+                                                                                });
+                                                                            </script>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="validationResponsibility">Project Name</label>
+                                                                        <input type="text" class="form-control" id="validationResponsibility" placeholder="Ex. I'm Team Lead"
+                                                                            required>
+                                                                        <div class="valid-feedback">
+                                                                            Looks good!
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="custom-select" required>
+                                                                            <option value="">Open this select menu</option>
+                                                                            <option value="1">One</option>
+                                                                            <option value="2">Two</option>
+                                                                            <option value="3">Three</option>
+                                                                        </select>
+                                                                        <div class="invalid-feedback">Example invalid custom select feedback</div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pt-5 text-center">
+                                                            <button type="button" class="btn btn-primary text-center">Save Project</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-socialinfo" role="tabpanel"
+                                            aria-labelledby="nav-socialinfo-tab">
+                                            <div class="pb-4">
+                                                <div class="card shadow">
+                                                    <div class="card-header font-weight-bold h4">
+                                                        Personal Information
+                                                    </div>
+                                                    <div class="card-body shadow-sm">
+                                                        <div class="col-sm-6">
+                                                            <p class="h4 pt-4">Link Your Social Accounts</p>
+                                                            <div class="col-sm pt-5">
+                                                                <div id="fb-root">
+                                                                    <div class="fb-login-button" data-width="" data-size="medium" data-button-type="continue_with"
+                                                                        data-auto-logout-link="false" data-use-continue-as="false"></div>
+                                                                </div>
+                                                                <script async defer crossorigin="anonymous"
+                                                                    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=2457247844389657&autoLogAppEvents=1"></script>
+                                                            </div>
+                                                            <div class="col-sm">
+                                                                <div id="my-signin2"></div>
+                                                                <script>
+                                                                    function onSuccess(googleUser) {
+                                                                        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                                                                    }
+                                                                    function onFailure(error) {
+                                                                        console.log(error);
+                                                                    }
+                                                                    function renderButton() {
+                                                                        gapi.signin2.render('my-signin2', {
+                                                                            'scope': 'profile email',
+                                                                            'width': 240,
+                                                                            'height': 50,
+                                                                            'longtitle': true,
+                                                                            'theme': 'dark',
+                                                                            'onsuccess': onSuccess,
+                                                                            'onfailure': onFailure
+                                                                        });
+                                                                    }
+                                                                </script>
+                                                            
+                                                                <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="list-viewprofile" role="tabpanel"
+                                aria-labelledby="list-viewprofile-list">
+                                <div class="card-columns">
+                                    <div class="card">
+                                        <img src="..." class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title that wraps to a new line</h5>
+                                            <p class="card-text">This is a longer card with supporting text below as a
+                                                natural lead-in to additional content. This content is a little bit
+                                                longer.</p>
+                                        </div>
+                                    </div>
+                                    <div class="card p-3">
+                                        <blockquote class="blockquote mb-0 card-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
+                                                erat a ante.</p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Someone famous in <cite title="Source Title">Source Title</cite>
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="card">
+                                        <img src="..." class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This card has supporting text below as a natural
+                                                lead-in to additional content.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                    ago</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-primary text-white text-center p-3">
+                                        <blockquote class="blockquote mb-0">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
+                                                erat.</p>
+                                            <footer class="blockquote-footer text-white">
+                                                <small>
+                                                    Someone famous in <cite title="Source Title">Source Title</cite>
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This card has a regular title and short paragraphy of
+                                                text below it.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                    ago</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <img src="..." class="card-img-top" alt="...">
+                                    </div>
+                                    <div class="card p-3 text-right">
+                                        <blockquote class="blockquote mb-0">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
+                                                erat a ante.</p>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted">
+                                                    Someone famous in <cite title="Source Title">Source Title</cite>
+                                                </small>
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is another card with title and supporting text
+                                                below. This card has some additional content to make it slightly taller
+                                                overall.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                                    ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer>
+        <nav class="bg-dark navbar-dark footer-fixed-custom">
+            <div class="container">
+                <div class="row ">
+                    <div class="col justify-content-start align-content-center  ">
+                        <p class="text-white mt-1 mb-1 ml-0 pl-0"><i class="fa fa-copyright"></i>&nbsp;&nbsp;&nbsp;Pioneer Coders 2019 . All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </footer>
+</body>
+
+</html>
